@@ -1,8 +1,69 @@
 /*
 1. use D3 to read in the data from samples.json
 */
+var url = "./samples.json";
 
 function init() {
+
+  var dropdownMenu = d3.select("#selDataset");
+
+  d3.json(url).then((response) => {
+
+    var namesArr = response.names;
+    var metArr = response.metadata;
+    var samplesArr = response.samples;
+
+    namesArr.forEach(testSub => {
+      d3.select("#selDataset").append("option").text(`${testSub}`);
+    });
+
+    var zerothSample = namesArr[0];
+
+    let matchobjArr = samplesArr.filter(obj => obj.id == zerothSample);
+
+    //update charts and metadata by calling functions and passing zerothSample
+    //functions: updateCharts, updateMeta
+  });
+
+}
+
+init();
+
+
+//let newsubjectArr = samplesArr.map(sampleObject.id == newSubject, => a.foo);
+
+/*
+function updateCharts(newSubject) {
+
+  var trace1 = {
+    type: "bar",
+    x: 
+    //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    y: 
+    //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    labels: 
+    //["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"],
+    text: 
+    //["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"],
+    orientation: "h"
+  }
+
+  var data = [trace1];
+
+  var layout = {
+    title: "test title",
+    xaxis: {title:"test xaxis title"},
+    yaxis: {title:"test yaxis title"}
+  };
+
+  Plotly.newPlot("bar", data, layout);
+}
+}
+
+//function updateMeta(newValue) {}
+
+function optionChanged(newValue) {
+
   var trace1 = {
     type: "bar",
     x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -23,8 +84,6 @@ function init() {
   Plotly.newPlot("bar", data, layout);
 }
 
-var url = "./samples.json";
-
 // user selects test subject id number
 //d3.select("#selDataset").select("value").on("change", testFunc());
 // d3.select("#selDataset").select("value").on("change", updatePlotly);
@@ -33,42 +92,26 @@ var url = "./samples.json";
 
 // function optionChanged(value) {
 //}
-
-d3.json(url).then(function(response) {
-
-  
-
-  const namesArr = response.names;
-  const metArr = response.metadata;
-  const samplesArr = response.samples;
-
-
+*/
   /*
   2. Create a horizontal bar chart with a dropdown menu to display 
   the top 10 OTUs found in that individual.
   */
-
-  //populate select dropdown with each test subject id number
-  namesArr.forEach(string => {
-    d3.select("#selDataset").append("option").text(`${string}`);
-  });
   
-  var x = [];
-  var y = [];
+//  var x = [];
+//  var y = [];
 
-  var dropdownMenu = d3.selectAll("#selDataset").node();
+//  var selectedOption = dropdownMenu.value;
 
-  var selectedOption = dropdownMenu.value;
-
-  var subjectId = selectedOption;
+//  var subjectId = selectedOption;
   //alternative var subjectId = d3.select("#selDataset").html(this.value);
 
-  var subjectBacteria = samplesArr[i].otu_ids.slice(0,10)
+//  var subjectBacteria = samplesArr[i].otu_ids.slice(0,10)
   /*where samplesArr.[object_i].id == subjectId*/
 
-  //var bacteriaValues = samplesArr[i].sample_values.slice(0,10);
+//  var bacteriaValues = samplesArr[i].sample_values.slice(0,10);
 
-  //var bacteriaLabels = samplesArr[i].otu_labels.slice(0,10);
+//  var bacteriaLabels = samplesArr[i].otu_labels.slice(0,10);
 
   // needs to be for specific test subject selected by user in dropdown
   // WHERE/FOR 
@@ -164,8 +207,6 @@ metadata JSON object somewhere on the page
 /*
 6. Update all of the plots any time a new sample is selected
 */
-});
-init();
 
 /*
   console.log("namesArr is an array of number strings");
