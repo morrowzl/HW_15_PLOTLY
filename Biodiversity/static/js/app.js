@@ -1,4 +1,4 @@
-var url = "./samples.json";
+var url = "./data/samples.json";
 
 // declare initiation function
 // select dropdown
