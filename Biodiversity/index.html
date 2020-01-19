@@ -21,11 +21,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-3 offset-md-1">
         <div class="well">
           <h5>Test Subject ID No.:</h5>
           <form>
-            <select id="selDataset" onchange="optionChanged(this.value)"></select>
+            <select id="selDataset" onchange="sampleSelected(this.value)"></select>
           </form>
         </div>
         <div class="panel panel-primary">
@@ -35,12 +35,12 @@
           <div id="sample-metadata" class="panel-body"></div>
         </div>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-4 offset-md-2">
         <div id="bar"></div>
       </div>
-      <div class="col-md-5">
+      <!-- <div class="col-md-4">
         <div id="gauge"></div>
-      </div>
+      </div> -->
     </div>
     <div class="row">
       <div class="col-md-12">
