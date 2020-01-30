@@ -108,7 +108,11 @@ function updateVisuals(myObj) {
     marker: {
       size: myObj.samples.sample_values,
       colorscale: "Rainbow",
-      color: myObj.samples.otu_ids
+      color: myObj.samples.otu_ids,
+      line: {
+        color: "000000",
+        width: "0.5"
+      }      
     },
     text: myObj.samples.otu_labels
   }
